@@ -11,6 +11,8 @@
                 <array>
                     <string>md</string>
                     <string>markdown</string>
+                    <string>markdn</string>
+                    <string>mdown</string>
                 </array>
                 <key>UTTypeConformsTo</key>
                 <array>

@@ -12,11 +12,13 @@
 @implementation MPDocumentWindowController {
 }
 
+#pragma mark Public
 - (void)updateWebView {
     NSString *pathWoLastComponent = [[self.document fileURL].path stringByDeletingLastPathComponent];
     [self.webView.mainFrame loadHTMLString:self.html baseURL:[NSURL URLWithString:pathWoLastComponent]];
 }
 
+#pragma mark NSWindowController
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self updateWebView];

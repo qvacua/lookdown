@@ -25,6 +25,31 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 
 @implementation MPDocument
 
+#pragma mark NSDocument
+- (void)makeWindowControllers {
+    [self generateHtmlAndSetController];
+    [self addWindowController:self.windowController];
+}
+
++ (BOOL)autosavesInPlace {
+    return YES;
+}
+
+- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
+    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
+    @throw exception;
+    return nil;
+}
+
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
+    self.markdown = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+    [self updateFileWatcher:self.fileURL.path];
+
+    return YES;
+}
+
+#pragma mark NSObject
 - (id)init {
     self = [super init];
 
@@ -38,31 +63,6 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
     _windowController = [[MPDocumentWindowController alloc] initWithWindowNibName:qDocumentNibName];
 
     return self;
-}
-
-- (void)makeWindowControllers {
-    [self generateHtmlAndSetController];
-    [self addWindowController:self.windowController];
-}
-
-+ (BOOL)autosavesInPlace {
-    return YES;
-}
-
-- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
-    // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-    // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
-    return nil;
-}
-
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
-    self.markdown = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
-    [self updateFileWatcher:self.fileURL.path];
-
-    return YES;
 }
 
 - (void)dealloc {
