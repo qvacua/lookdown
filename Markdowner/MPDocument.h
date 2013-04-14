@@ -1,13 +1,17 @@
-//
-//  MPDocument.h
-//  Markdowner
-//
-//  Created by Tae Won Ha on 4/14/13.
-//  Copyright (c) 2013 Tae Won Ha. All rights reserved.
-//
+/**
+ * Tae Won Ha
+ * http://qvacua.com
+ * https://github.com/qvacua
+ *
+ * See LICENSE
+ */
 
 #import <Cocoa/Cocoa.h>
+#import "VDKQueue.h"
 
-@interface MPDocument : NSDocument
+@class UKKQueue;
+
+@interface MPDocument : NSDocument <VDKQueueDelegate> {
+}
 
 @end

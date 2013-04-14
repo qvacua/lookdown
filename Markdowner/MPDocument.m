@@ -1,44 +1,49 @@
-//
-//  MPDocument.m
-//  Markdowner
-//
-//  Created by Tae Won Ha on 4/14/13.
-//  Copyright (c) 2013 Tae Won Ha. All rights reserved.
-//
+/**
+ * Tae Won Ha
+ * http://qvacua.com
+ * https://github.com/qvacua
+ *
+ * See LICENSE
+ */
 
 #import "MPDocument.h"
+#import "MPDocumentWindowController.h"
+
+const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
+
+@interface MPDocument ()
+
+@property MPDocumentWindowController *windowController;
+@property VDKQueue *kqueue;
+
+@end
 
 @implementation MPDocument
 
-- (id)init
-{
+- (id)init {
     self = [super init];
-    if (self) {
-        // Add your subclass-specific initialization here.
+
+    if (!self) {
+        return nil;
     }
+
+    _kqueue = [[VDKQueue alloc] init];
+    _kqueue.delegate = self;
+
+    _windowController = [[MPDocumentWindowController alloc] initWithWindowNibName:@"MPDocument"];
+
     return self;
 }
 
-- (NSString *)windowNibName
-{
-    // Override returning the nib file name of the document
-    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-    return @"MPDocument";
+- (void)makeWindowControllers {
+    [self addWindowController:self.windowController];
 }
 
-- (void)windowControllerDidLoadNib:(NSWindowController *)aController
-{
-    [super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
-}
-
-+ (BOOL)autosavesInPlace
-{
++ (BOOL)autosavesInPlace {
     return YES;
 }
 
-- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
-{
+- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
     // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
     NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
@@ -46,14 +51,25 @@
     return nil;
 }
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
-{
-    // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-    // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-    // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
+    [self.kqueue addPath:self.fileURL.path notifyingAbout:qDefaultFileNotifierEvents];
+
     return YES;
+}
+
+- (void)dealloc {
+    [self.kqueue removeAllPaths];
+    self.kqueue = nil;
+}
+
+#pragma mark VDKQueueDelegate
+- (void)VDKQueue:(VDKQueue *)queue receivedNotification:(NSString *)noteName forPath:(NSString *)fpath {
+    /*
+    When I use MacVim to edit the file, VDKQueue loses the track of the file after the first saving. Thus, we remove the
+    path and add it again.
+     */
+    [queue removeAllPaths];
+    [queue addPath:fpath notifyingAbout:qDefaultFileNotifierEvents];
 }
 
 @end
