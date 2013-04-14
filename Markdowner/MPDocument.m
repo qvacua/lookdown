@@ -8,13 +8,16 @@
 
 #import "MPDocument.h"
 #import "MPDocumentWindowController.h"
+#import <OCDiscount/OCDiscount.h>
 
-const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
+static const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
+static NSString *const qDocumentNibName = @"MPDocument";
 
 @interface MPDocument ()
 
 @property MPDocumentWindowController *windowController;
-@property VDKQueue *kqueue;
+@property VDKQueue *fileWatcher;
+@property NSString *markdown;
 
 @end
 
@@ -27,15 +30,16 @@ const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNot
         return nil;
     }
 
-    _kqueue = [[VDKQueue alloc] init];
-    _kqueue.delegate = self;
+    _fileWatcher = [[VDKQueue alloc] init];
+    _fileWatcher.delegate = self;
 
-    _windowController = [[MPDocumentWindowController alloc] initWithWindowNibName:@"MPDocument"];
+    _windowController = [[MPDocumentWindowController alloc] initWithWindowNibName:qDocumentNibName];
 
     return self;
 }
 
 - (void)makeWindowControllers {
+    self.windowController.html = [self.markdown htmlFromMarkdown];
     [self addWindowController:self.windowController];
 }
 
@@ -52,24 +56,39 @@ const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNot
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
-    [self.kqueue addPath:self.fileURL.path notifyingAbout:qDefaultFileNotifierEvents];
+    self.markdown = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+    [self updateFileWatcher:self.fileURL.path];
 
     return YES;
 }
 
 - (void)dealloc {
-    [self.kqueue removeAllPaths];
-    self.kqueue = nil;
+    [self.fileWatcher removeAllPaths];
+    self.fileWatcher = nil;
 }
 
 #pragma mark VDKQueueDelegate
-- (void)VDKQueue:(VDKQueue *)queue receivedNotification:(NSString *)noteName forPath:(NSString *)fpath {
+- (void)VDKQueue:(VDKQueue *)queue receivedNotification:(NSString *)noteName forPath:(NSString *)path {
+    [self updateUi];
+    [self updateFileWatcher:path];
+}
+
+#pragma mark Private
+- (void)updateUi {
+    self.markdown = [NSString stringWithContentsOfFile:self.fileURL.path encoding:NSUTF8StringEncoding error:NULL];
+
+    self.windowController.html = [self.markdown htmlFromMarkdown];
+    [self.windowController updateWebView];
+}
+
+- (void)updateFileWatcher:(NSString *)path {
     /*
     When I use MacVim to edit the file, VDKQueue loses the track of the file after the first saving. Thus, we remove the
     path and add it again.
      */
-    [queue removeAllPaths];
-    [queue addPath:fpath notifyingAbout:qDefaultFileNotifierEvents];
+    [self.fileWatcher removeAllPaths];
+    [self.fileWatcher addPath:path notifyingAbout:qDefaultFileNotifierEvents];
 }
 
 @end

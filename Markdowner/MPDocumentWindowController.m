@@ -12,8 +12,13 @@
 @implementation MPDocumentWindowController {
 }
 
-- (void)updateWebViewWithHtml:(NSString *)html {
-    [self.webView.mainFrame loadHTMLString:html baseURL:[NSURL URLWithString:@"file:///tmp"]];
+- (void)updateWebView {
+    [self.webView.mainFrame loadHTMLString:self.html baseURL:[NSURL URLWithString:@"file:///tmp"]];
+}
+
+- (void)windowDidLoad {
+    [super windowDidLoad];
+    [self updateWebView];
 }
 
 @end

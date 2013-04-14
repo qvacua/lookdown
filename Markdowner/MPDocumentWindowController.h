@@ -13,7 +13,8 @@
 @interface MPDocumentWindowController : NSWindowController
 
 @property (weak) IBOutlet WebView *webView;
+@property NSString *html;
 
-- (void)updateWebViewWithHtml:(NSString *)html;
+- (void)updateWebView;
 
 @end
