@@ -2,7 +2,7 @@ LookDown
 ========
 
 * <http://qvacua.com>
-* [Download](http://...)
+* [Download](https://github.com/qvacua/lookdown/wiki)
 
 About
 -----
