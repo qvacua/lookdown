@@ -195,9 +195,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B340784171A144A00C2217F /* Markdowner */ = {
+		4B340784171A144A00C2217F /* LookDown */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B3407B9171A144B00C2217F /* Build configuration list for PBXNativeTarget "Markdowner" */;
+			buildConfigurationList = 4B3407B9171A144B00C2217F /* Build configuration list for PBXNativeTarget "LookDown" */;
 			buildPhases = (
 				4B340781171A144A00C2217F /* Sources */,
 				4B340782171A144A00C2217F /* Frameworks */,
@@ -208,14 +208,14 @@
 			);
 			dependencies = (
 			);
-			name = Markdowner;
+			name = LookDown;
 			productName = Markdowner;
 			productReference = 4B340785171A144A00C2217F /* Markdowner.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4B3407A7171A144A00C2217F /* MarkdownerTests */ = {
+		4B3407A7171A144A00C2217F /* LookDownTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B3407BC171A144B00C2217F /* Build configuration list for PBXNativeTarget "MarkdownerTests" */;
+			buildConfigurationList = 4B3407BC171A144B00C2217F /* Build configuration list for PBXNativeTarget "LookDownTests" */;
 			buildPhases = (
 				4B3407A3171A144A00C2217F /* Sources */,
 				4B3407A4171A144A00C2217F /* Frameworks */,
@@ -226,7 +226,7 @@
 			);
 			dependencies = (
 			);
-			name = MarkdownerTests;
+			name = LookDownTests;
 			productName = MarkdownerTests;
 			productReference = 4B3407A8171A144A00C2217F /* MarkdownerTests.octest */;
 			productType = "com.apple.product-type.bundle";
@@ -253,8 +253,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4B340784171A144A00C2217F /* Markdowner */,
-				4B3407A7171A144A00C2217F /* MarkdownerTests */,
+				4B340784171A144A00C2217F /* LookDown */,
+				4B3407A7171A144A00C2217F /* LookDownTests */,
 			);
 		};
 /* End PBXProject section */
@@ -504,7 +504,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B3407B9171A144B00C2217F /* Build configuration list for PBXNativeTarget "Markdowner" */ = {
+		4B3407B9171A144B00C2217F /* Build configuration list for PBXNativeTarget "LookDown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B3407BA171A144B00C2217F /* Debug */,
@@ -513,7 +513,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B3407BC171A144B00C2217F /* Build configuration list for PBXNativeTarget "MarkdownerTests" */ = {
+		4B3407BC171A144B00C2217F /* Build configuration list for PBXNativeTarget "LookDownTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B3407BD171A144B00C2217F /* Debug */,
