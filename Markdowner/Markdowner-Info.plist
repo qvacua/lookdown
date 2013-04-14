@@ -60,5 +60,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+    <key>SUPublicDSAKeyFile</key>
+    <string>sparkle-pub.pem</string>
+    <key>SUFeedURL</key>
+    <string>http://qvacua.com/lookdown/appcast.xml</string>
 </dict>
 </plist>
