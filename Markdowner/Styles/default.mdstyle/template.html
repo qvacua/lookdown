@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><% TITLE %></title>
+    <style>
+        /*
+         Based on http://webdesign.maratz.com/lab/typography-for-developers/style.css
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font: 62.5%/150% 'Hoefler Text', serif;
+            color: #444;
+
+            background: #f8f8f8 url(data:image/gif;base64,R0lGODlhIAAgAMIGAPPz8/T09PX19fb29vf39/j4+P///////yH5BAEKAAcALAAAAAAgACAAAAPkCFoLVBBERVm08s6qKRgeZDGLiHmScwpZCrAZWQSo605dTFKBvDcim4kjobVCrp7udIzFBhDlpvRawEaNFk6ADf4aDxfrouCmZOfQdPwocMln32njPgaNH1+ljO7jiAt4aDcYJD0Mb1BfeEo6eC1GM3tyA1c3HDhfI0x9cQogTkObe1SWTmoahaBwUaQXNDsWIKxfoT+gJViotD+FWYoSs2k2w7CrKY21QUB0p2rPysKpRL6TVFJyxEXIg15IKZYzm7GI1m9zelTNKW26Nc6kqJNekpqZNTnvSHCEWULaa3QQMpIAADs=);
+
+            text-rendering: optimizeLegibility;
+        }
+
+        p, li, th, td {
+            font-size: 1.6em;
+            line-height: 1.5em;
+        }
+
+        p {
+            margin-bottom: 1.5em;
+        }
+
+        ul, ol {
+            margin-bottom: 2.4em;
+        }
+
+        h3, h2, h1 {
+            font-weight: bold;
+            line-height: 1.5em;
+        }
+
+        h3 {
+            font-size: 1.6em;
+        }
+
+        h2 {
+            font-size: 2.4em;
+            padding: .5833em 0 0;
+            margin-bottom: .9166em;
+        }
+
+        h1 {
+            font-size: 3.2em;
+            padding: 12px 0 0;
+            margin-bottom: .59em;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 3.6em;
+            margin-bottom: 3.6em;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        th {
+            font-weight: normal;
+        }
+
+        th, td {
+            border-top: .0625em solid #ccc;
+            padding: .6875em 1em .75em;
+            vertical-align: top;
+        }
+
+        th[scope="row"] {
+            padding-left: 0;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        #content {
+            width: 54em;
+            padding: 0 2em;
+            margin: 2em auto;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="content"><% CONTENT %></div>
+</body>
+</html>

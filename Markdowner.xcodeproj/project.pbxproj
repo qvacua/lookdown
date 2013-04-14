@@ -10,6 +10,8 @@
 		1929B6E8100B771C0622B51C /* VDKQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1929B08527BB1DEB2769A9C5 /* VDKQueue.h */; };
 		1929B711F7AC113F300CF796 /* MPDocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD2982F62911645715DA /* MPDocumentWindowController.m */; };
 		1929B84EC7C8CDA10BFFE74E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929B40260BD1974C8EC902A /* WebKit.framework */; };
+		1929B8B771E4080BF261084A /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 1929BF9E57BED373C63519A6 /* template.html */; };
+		1929B9B1213F13D8F930CD05 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 1929BF9E57BED373C63519A6 /* template.html */; };
 		1929BBCA6BBCD9B03EE051CA /* MPDocumentWindowController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1929B8CA16AF8B533B2A46CA /* MPDocumentWindowController.h */; };
 		1929BC0920769E4ABC22D9B2 /* VDKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD53DFF44AD2846EB349 /* VDKQueue.m */; };
 		1929BEE3FEBE69782861B96D /* MPDocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD2982F62911645715DA /* MPDocumentWindowController.m */; };
@@ -53,6 +55,7 @@
 		1929B9541B4DD0F1A3F5E671 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		1929BD2982F62911645715DA /* MPDocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDocumentWindowController.m; sourceTree = "<group>"; };
 		1929BD53DFF44AD2846EB349 /* VDKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKQueue.m; sourceTree = "<group>"; };
+		1929BF9E57BED373C63519A6 /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		4B340785171A144A00C2217F /* Markdowner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Markdowner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B340788171A144A00C2217F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4B340790171A144A00C2217F /* Markdowner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Markdowner-Info.plist"; sourceTree = "<group>"; };
@@ -98,6 +101,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1929B75E6DE24BB90191F0F7 /* default.mdstyle */ = {
+			isa = PBXGroup;
+			children = (
+				1929BF9E57BED373C63519A6 /* template.html */,
+			);
+			path = default.mdstyle;
+			sourceTree = "<group>";
+		};
+		1929BCC511A37E67F97F76AF /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				1929B75E6DE24BB90191F0F7 /* default.mdstyle */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		4B34077C171A144A00C2217F = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +160,7 @@
 				1929B8CA16AF8B533B2A46CA /* MPDocumentWindowController.h */,
 				1929BD53DFF44AD2846EB349 /* VDKQueue.m */,
 				1929B08527BB1DEB2769A9C5 /* VDKQueue.h */,
+				1929BCC511A37E67F97F76AF /* Styles */,
 			);
 			path = Markdowner;
 			sourceTree = "<group>";
@@ -252,6 +272,7 @@
 				4B340799171A144A00C2217F /* Credits.rtf in Resources */,
 				4B34079F171A144A00C2217F /* MPDocument.xib in Resources */,
 				4B3407A2171A144A00C2217F /* MainMenu.xib in Resources */,
+				1929B8B771E4080BF261084A /* template.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B3407B3171A144B00C2217F /* InfoPlist.strings in Resources */,
+				1929B9B1213F13D8F930CD05 /* template.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

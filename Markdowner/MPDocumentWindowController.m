@@ -13,7 +13,8 @@
 }
 
 - (void)updateWebView {
-    [self.webView.mainFrame loadHTMLString:self.html baseURL:[NSURL URLWithString:@"file:///tmp"]];
+    NSString *pathWoLastComponent = [[self.document fileURL].path stringByDeletingLastPathComponent];
+    [self.webView.mainFrame loadHTMLString:self.html baseURL:[NSURL URLWithString:pathWoLastComponent]];
 }
 
 - (void)windowDidLoad {

@@ -12,6 +12,8 @@
 
 static const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
 static NSString *const qDocumentNibName = @"MPDocument";
+static NSString *const qTemplateTitleTag = @"<% TITLE %>";
+static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 
 @interface MPDocument ()
 
@@ -39,7 +41,7 @@ static NSString *const qDocumentNibName = @"MPDocument";
 }
 
 - (void)makeWindowControllers {
-    self.windowController.html = [self.markdown htmlFromMarkdown];
+    [self generateHtmlAndSetController];
     [self addWindowController:self.windowController];
 }
 
@@ -64,6 +66,7 @@ static NSString *const qDocumentNibName = @"MPDocument";
 }
 
 - (void)dealloc {
+    // just to be sure... probably not necessary
     [self.fileWatcher removeAllPaths];
     self.fileWatcher = nil;
 }
@@ -78,7 +81,7 @@ static NSString *const qDocumentNibName = @"MPDocument";
 - (void)updateUi {
     self.markdown = [NSString stringWithContentsOfFile:self.fileURL.path encoding:NSUTF8StringEncoding error:NULL];
 
-    self.windowController.html = [self.markdown htmlFromMarkdown];
+    [self generateHtmlAndSetController];
     [self.windowController updateWebView];
 }
 
@@ -89,6 +92,16 @@ static NSString *const qDocumentNibName = @"MPDocument";
      */
     [self.fileWatcher removeAllPaths];
     [self.fileWatcher addPath:path notifyingAbout:qDefaultFileNotifierEvents];
+}
+
+- (void)generateHtmlAndSetController {
+    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"template" ofType:@"html"];
+    NSString *template = [NSString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL];
+
+    NSString *html = [template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:self.displayName];
+    html = [html stringByReplacingOccurrencesOfString:qTemplateContentTag withString:[self.markdown htmlFromMarkdown]];
+
+    self.windowController.html = html;
 }
 
 @end
