@@ -95,7 +95,7 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 }
 
 - (void)generateHtmlAndSetController {
-    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"template" ofType:@"html"];
+    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"template" ofType:@"html" inDirectory:@"Styles/default.ldstyle"];
     NSString *template = [NSString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL];
 
     NSString *html = [template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:self.displayName];
