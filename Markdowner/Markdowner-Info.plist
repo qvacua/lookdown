@@ -13,6 +13,7 @@
 				<string>markdown</string>
 				<string>markdn</string>
 				<string>mdown</string>
+                <string>mkd</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
