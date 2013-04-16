@@ -9,9 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "VDKQueue.h"
 
-@class UKKQueue;
-
-@interface MPDocument : NSDocument <VDKQueueDelegate> {
+@interface MPMarkdown : NSDocument <VDKQueueDelegate> {
 }
 
 @end

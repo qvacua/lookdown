@@ -6,16 +6,16 @@
  * See LICENSE
  */
 
-#import "MPDocument.h"
+#import "MPMarkdown.h"
 #import "MPDocumentWindowController.h"
 #import <OCDiscount/OCDiscount.h>
 
 static const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
-static NSString *const qDocumentNibName = @"MPDocument";
+static NSString *const qDocumentNibName = @"MPMarkdown";
 static NSString *const qTemplateTitleTag = @"<% TITLE %>";
 static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 
-@interface MPDocument ()
+@interface MPMarkdown ()
 
 @property MPDocumentWindowController *windowController;
 @property VDKQueue *fileWatcher;
@@ -23,7 +23,7 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 
 @end
 
-@implementation MPDocument
+@implementation MPMarkdown
 
 #pragma mark NSDocument
 - (void)makeWindowControllers {

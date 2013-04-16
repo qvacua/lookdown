@@ -13,7 +13,7 @@
 				<string>markdown</string>
 				<string>markdn</string>
 				<string>mdown</string>
-                <string>mkd</string>
+				<string>mkd</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
@@ -26,11 +26,33 @@
 				<string>net.daringfireball.markdown</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>MPDocument</string>
+			<string>MPMarkdown</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.text</string>
 			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>ldstyle</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string></string>
+			<key>CFBundleTypeName</key>
+			<string>LookDown Style</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.qvacua.${PRODUCT_NAME:rfc1034identifier}.style</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<true/>
+			<key>NSDocumentClass</key>
+			<string>MPStyle</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -61,9 +83,29 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-    <key>SUPublicDSAKeyFile</key>
-    <string>sparkle-pub.pem</string>
-    <key>SUFeedURL</key>
-    <string>http://qvacua.com/lookdown/appcast.xml</string>
+	<key>SUFeedURL</key>
+	<string>http://qvacua.com/lookdown/appcast.xml</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>sparkle-pub.pem</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.package</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>LookDown Style</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.qvacua.${PRODUCT_NAME:rfc1034identifier}.style</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ldstyle</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
