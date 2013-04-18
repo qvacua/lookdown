@@ -106,6 +106,7 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
     NSString *template = [NSString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL];
 
     NSString *html = [template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:self.displayName];
+    html = [html stringByReplacingOccurrencesOfString:@"<% STYLE_ROOT %>" withString:[templatePath stringByDeletingLastPathComponent]];
     NSString *contentFromMarkdown = [self.markdown htmlFromMarkdown];
     if (contentFromMarkdown == nil) {
         contentFromMarkdown = @"<h1>CONVERSION FAILED</h1>";
