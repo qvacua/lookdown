@@ -73,6 +73,19 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 
 #pragma mark VDKQueueDelegate
 - (void)VDKQueue:(VDKQueue *)queue receivedNotification:(NSString *)noteName forPath:(NSString *)path {
+    if ([noteName isEqualToString:VDKQueueLinkCountChangeNotification]) {
+        return;
+    }
+
+    if ([noteName isEqualToString:VDKQueueRenameNotification]) {
+        /*
+         Vim first renames and then overwrites the file. While renamed, the fileWatcher cannot open it and after
+         that, open() in VDKQueue does not work anymore...
+         */
+
+        return;
+    }
+
     [self updateUi];
     [self updateFileWatcher:path];
 }
