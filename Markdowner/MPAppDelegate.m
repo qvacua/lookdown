@@ -7,10 +7,12 @@
  */
 
 #import "MPAppDelegate.h"
+#import "MPStyleManager.h"
 
 @implementation MPAppDelegate
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    MPStyleManager *styleManager = [[MPStyleManager alloc] init];
 
 }
 

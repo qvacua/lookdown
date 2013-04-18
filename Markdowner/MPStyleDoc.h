@@ -5,12 +5,10 @@
  *
  * See LICENSE
  */
-
 #import <Foundation/Foundation.h>
 
-@interface MPStyleManager : NSObject {
+
+@interface MPStyleDoc : NSDocument {
+
 }
-
-@property NSArray *styles;
-
 @end
