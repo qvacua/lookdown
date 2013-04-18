@@ -7,15 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1929B0321B585F0DA8F20278 /* meta.json in Resources */ = {isa = PBXBuildFile; fileRef = 1929B84F844FA68726447361 /* meta.json */; };
+		1929B0B98E995E681E0BDE7B /* NSMenuItem+Q.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BA8494E37760215C9F18 /* NSMenuItem+Q.m */; };
+		1929B200F1508171053EA2AF /* NSMenuItem+Q.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1929B0ED11EC82B49F101621 /* NSMenuItem+Q.h */; };
 		1929B217CE3AFEADC93B1DCD /* MPStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B7A40CD7108DC4C8C7B4 /* MPStyle.m */; };
 		1929B2791161D801C402400F /* MPStyle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1929B7139BA7DBFC522EA00A /* MPStyle.h */; };
+		1929B532AF21B07207F66F63 /* MPStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B67849472B239A83D466 /* MPStyleManager.m */; };
 		1929B711F7AC113F300CF796 /* MPDocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD2982F62911645715DA /* MPDocumentWindowController.m */; };
+		1929B74199CC45CBA3681770 /* MPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B337D5A37B5A202F9110 /* MPAppDelegate.m */; };
 		1929B84EC7C8CDA10BFFE74E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929B40260BD1974C8EC902A /* WebKit.framework */; };
+		1929BACA84DD652D1ECE0912 /* MPStyleManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1929B820E93AACE1B888F097 /* MPStyleManager.h */; };
 		1929BAE5A4F4F0EBB5602D6E /* MPStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B7A40CD7108DC4C8C7B4 /* MPStyle.m */; };
+		1929BAF012389A09A629BB03 /* MPAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1929B80BD531D6BA69BCAF0F /* MPAppDelegate.h */; };
 		1929BC0920769E4ABC22D9B2 /* VDKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD53DFF44AD2846EB349 /* VDKQueue.m */; };
 		1929BEE3FEBE69782861B96D /* MPDocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD2982F62911645715DA /* MPDocumentWindowController.m */; };
+		1929BF2A82517DC097CBC771 /* meta.json in Resources */ = {isa = PBXBuildFile; fileRef = 1929B84F844FA68726447361 /* meta.json */; };
+		1929BF3CE2211D268B3094F6 /* MPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B337D5A37B5A202F9110 /* MPAppDelegate.m */; };
 		1929BF432DCA243D9240C628 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929B9541B4DD0F1A3F5E671 /* CoreServices.framework */; };
 		1929BF46EE7892241D11E00B /* VDKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD53DFF44AD2846EB349 /* VDKQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1929BF80B5FC1899306B183B /* MPStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B67849472B239A83D466 /* MPStyleManager.m */; };
+		1929BFDD4A17922AF74DE094 /* NSMenuItem+Q.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BA8494E37760215C9F18 /* NSMenuItem+Q.m */; };
 		4B340789171A144A00C2217F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B340788171A144A00C2217F /* Cocoa.framework */; };
 		4B340793171A144A00C2217F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B340791171A144A00C2217F /* InfoPlist.strings */; };
 		4B340795171A144A00C2217F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B340794171A144A00C2217F /* main.m */; };
@@ -47,6 +58,9 @@
 				4B3407C3171A14AA00C2217F /* OCDiscount.framework in CopyFiles */,
 				4B3EFFA5171AF71700D1D951 /* Sparkle.framework in CopyFiles */,
 				1929B2791161D801C402400F /* MPStyle.h in CopyFiles */,
+				1929BAF012389A09A629BB03 /* MPAppDelegate.h in CopyFiles */,
+				1929B200F1508171053EA2AF /* NSMenuItem+Q.h in CopyFiles */,
+				1929BACA84DD652D1ECE0912 /* MPStyleManager.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,11 +68,18 @@
 
 /* Begin PBXFileReference section */
 		1929B08527BB1DEB2769A9C5 /* VDKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKQueue.h; sourceTree = "<group>"; };
+		1929B0ED11EC82B49F101621 /* NSMenuItem+Q.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem+Q.h"; sourceTree = "<group>"; };
+		1929B337D5A37B5A202F9110 /* MPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAppDelegate.m; sourceTree = "<group>"; };
 		1929B40260BD1974C8EC902A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		1929B67849472B239A83D466 /* MPStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStyleManager.m; sourceTree = "<group>"; };
 		1929B7139BA7DBFC522EA00A /* MPStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStyle.h; sourceTree = "<group>"; };
 		1929B7A40CD7108DC4C8C7B4 /* MPStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStyle.m; sourceTree = "<group>"; };
+		1929B80BD531D6BA69BCAF0F /* MPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAppDelegate.h; sourceTree = "<group>"; };
+		1929B820E93AACE1B888F097 /* MPStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStyleManager.h; sourceTree = "<group>"; };
+		1929B84F844FA68726447361 /* meta.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; name = meta.json; path = Styles/default.ldstyle/meta.json; sourceTree = "<group>"; };
 		1929B8CA16AF8B533B2A46CA /* MPDocumentWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDocumentWindowController.h; sourceTree = "<group>"; };
 		1929B9541B4DD0F1A3F5E671 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		1929BA8494E37760215C9F18 /* NSMenuItem+Q.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenuItem+Q.m"; sourceTree = "<group>"; };
 		1929BD2982F62911645715DA /* MPDocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDocumentWindowController.m; sourceTree = "<group>"; };
 		1929BD53DFF44AD2846EB349 /* VDKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKQueue.m; sourceTree = "<group>"; };
 		4B340785171A144A00C2217F /* Markdowner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Markdowner.app; path = LookDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +179,13 @@
 				1929B08527BB1DEB2769A9C5 /* VDKQueue.h */,
 				1929B7A40CD7108DC4C8C7B4 /* MPStyle.m */,
 				1929B7139BA7DBFC522EA00A /* MPStyle.h */,
+				1929B337D5A37B5A202F9110 /* MPAppDelegate.m */,
+				1929B80BD531D6BA69BCAF0F /* MPAppDelegate.h */,
+				1929B0ED11EC82B49F101621 /* NSMenuItem+Q.h */,
+				1929BA8494E37760215C9F18 /* NSMenuItem+Q.m */,
+				1929B84F844FA68726447361 /* meta.json */,
+				1929B67849472B239A83D466 /* MPStyleManager.m */,
+				1929B820E93AACE1B888F097 /* MPStyleManager.h */,
 			);
 			path = Markdowner;
 			sourceTree = "<group>";
@@ -279,6 +307,7 @@
 				4B3407A2171A144A00C2217F /* MainMenu.xib in Resources */,
 				4B3EFFA3171AEE0000D1D951 /* sparkle-pub.pem in Resources */,
 				4BDD2784171DFDF7005A09B4 /* Styles in Resources */,
+				1929BF2A82517DC097CBC771 /* meta.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +317,7 @@
 			files = (
 				4B3407B3171A144B00C2217F /* InfoPlist.strings in Resources */,
 				4B3EFFA4171AEE0000D1D951 /* sparkle-pub.pem in Resources */,
+				1929B0321B585F0DA8F20278 /* meta.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +349,9 @@
 				1929B711F7AC113F300CF796 /* MPDocumentWindowController.m in Sources */,
 				1929BF46EE7892241D11E00B /* VDKQueue.m in Sources */,
 				1929B217CE3AFEADC93B1DCD /* MPStyle.m in Sources */,
+				1929BF3CE2211D268B3094F6 /* MPAppDelegate.m in Sources */,
+				1929B0B98E995E681E0BDE7B /* NSMenuItem+Q.m in Sources */,
+				1929BF80B5FC1899306B183B /* MPStyleManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +363,9 @@
 				1929BEE3FEBE69782861B96D /* MPDocumentWindowController.m in Sources */,
 				1929BC0920769E4ABC22D9B2 /* VDKQueue.m in Sources */,
 				1929BAE5A4F4F0EBB5602D6E /* MPStyle.m in Sources */,
+				1929B74199CC45CBA3681770 /* MPAppDelegate.m in Sources */,
+				1929BFDD4A17922AF74DE094 /* NSMenuItem+Q.m in Sources */,
+				1929B532AF21B07207F66F63 /* MPStyleManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

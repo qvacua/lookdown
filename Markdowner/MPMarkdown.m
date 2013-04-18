@@ -11,9 +11,12 @@
 #import <OCDiscount/OCDiscount.h>
 
 static const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
+
 static NSString *const qDocumentNibName = @"MPMarkdown";
+
 static NSString *const qTemplateTitleTag = @"<% TITLE %>";
 static NSString *const qTemplateContentTag = @"<% CONTENT %>";
+static NSString *const qTemplateStyleRootTag = @"<% STYLE_ROOT %>";
 
 @interface MPMarkdown ()
 
@@ -106,13 +109,14 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
     NSString *template = [NSString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL];
 
     NSString *html = [template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:self.displayName];
-    html = [html stringByReplacingOccurrencesOfString:@"<% STYLE_ROOT %>" withString:[templatePath stringByDeletingLastPathComponent]];
+    html = [html stringByReplacingOccurrencesOfString:qTemplateStyleRootTag withString:[templatePath stringByDeletingLastPathComponent]];
+
     NSString *contentFromMarkdown = [self.markdown htmlFromMarkdown];
     if (contentFromMarkdown == nil) {
         contentFromMarkdown = @"<h1>CONVERSION FAILED</h1>";
     }
-    html = [html stringByReplacingOccurrencesOfString:qTemplateContentTag withString:contentFromMarkdown];
 
+    html = [html stringByReplacingOccurrencesOfString:qTemplateContentTag withString:contentFromMarkdown];
     self.windowController.html = html;
 }
 
