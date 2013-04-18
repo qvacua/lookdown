@@ -65,14 +65,21 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
     return self;
 }
 
-- (void)dealloc {
-    // just to be sure... probably not necessary
-    [self.fileWatcher removeAllPaths];
-    self.fileWatcher = nil;
-}
-
 #pragma mark VDKQueueDelegate
 - (void)VDKQueue:(VDKQueue *)queue receivedNotification:(NSString *)noteName forPath:(NSString *)path {
+    if ([noteName isEqualToString:VDKQueueLinkCountChangeNotification]) {
+        return;
+    }
+
+    if ([noteName isEqualToString:VDKQueueRenameNotification]) {
+        /*
+         Vim first renames and then overwrites the file. While renamed, the fileWatcher cannot open it and after
+         that, open() in VDKQueue does not work anymore...
+         */
+
+        return;
+    }
+
     [self updateUi];
     [self updateFileWatcher:path];
 }
@@ -95,11 +102,15 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 }
 
 - (void)generateHtmlAndSetController {
-    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"template" ofType:@"html" inDirectory:@"Styles/default.ldstyle"];
+    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"template" ofType:@"html" inDirectory:@"Styles/dark.ldstyle"];
     NSString *template = [NSString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL];
 
     NSString *html = [template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:self.displayName];
-    html = [html stringByReplacingOccurrencesOfString:qTemplateContentTag withString:[self.markdown htmlFromMarkdown]];
+    NSString *contentFromMarkdown = [self.markdown htmlFromMarkdown];
+    if (contentFromMarkdown == nil) {
+        contentFromMarkdown = @"<h1>CONVERSION FAILED</h1>";
+    }
+    html = [html stringByReplacingOccurrencesOfString:qTemplateContentTag withString:contentFromMarkdown];
 
     self.windowController.html = html;
 }

@@ -22,10 +22,10 @@
         }
 
         html {
-            font: 62.5%/150% Georgia, serif;
+            font: 10px/1.5 Georgia, serif;
             color: #b9c4d0;
 
-            background: #f8f8f8 url(background.gif);
+            background: #f8f8f8 url(<% STYLE_ROOT %>/background.gif);
         }
 
         body {
@@ -33,22 +33,27 @@
         }
 
         p, li, th, td {
-            font-size: 1.6em;
-            line-height: 1.5em;
+            font-size: 1.6rem;
+            line-height: 1.5;
         }
 
         p {
-            margin-bottom: 1.5em;
+            margin-bottom: 1.5rem;
         }
 
         ul, ol {
-            margin-bottom: 2.4em;
+            margin-bottom: 2.4rem;
+        }
+
+        ul ul, ul ol, ol ul, ol ol {
+            margin-left: 2rem;
         }
 
         h3, h2, h1 {
             font-family: "Helvetica Neue", sans-serif;
             font-weight: bold;
-            line-height: 1.5em;
+            line-height: 1.5;
+            color: white;
         }
 
         h3 {
