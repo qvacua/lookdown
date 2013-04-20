@@ -8,15 +8,13 @@
 
 #import "MPMarkdown.h"
 #import "MPDocumentWindowController.h"
+#import "MPStyle.h"
+#import "MPStyleManager.h"
 #import <OCDiscount/OCDiscount.h>
 
 static const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
 
 static NSString *const qDocumentNibName = @"MPMarkdown";
-
-static NSString *const qTemplateTitleTag = @"<% TITLE %>";
-static NSString *const qTemplateContentTag = @"<% CONTENT %>";
-static NSString *const qTemplateStyleRootTag = @"<% STYLE_ROOT %>";
 
 @interface MPMarkdown ()
 
@@ -65,6 +63,8 @@ static NSString *const qTemplateStyleRootTag = @"<% STYLE_ROOT %>";
 
     _windowController = [[MPDocumentWindowController alloc] initWithWindowNibName:qDocumentNibName];
 
+    _styleManager = [[MPStyleManager alloc] init];
+
     return self;
 }
 
@@ -105,18 +105,15 @@ static NSString *const qTemplateStyleRootTag = @"<% STYLE_ROOT %>";
 }
 
 - (void)generateHtmlAndSetController {
-    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"template" ofType:@"html" inDirectory:@"Styles/dark.ldstyle"];
-    NSString *template = [NSString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL];
-
-    NSString *html = [template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:self.displayName];
-    html = [html stringByReplacingOccurrencesOfString:qTemplateStyleRootTag withString:[templatePath stringByDeletingLastPathComponent]];
-
     NSString *contentFromMarkdown = [self.markdown htmlFromMarkdown];
     if (contentFromMarkdown == nil) {
         contentFromMarkdown = @"<h1>CONVERSION FAILED</h1>";
     }
 
-    html = [html stringByReplacingOccurrencesOfString:qTemplateContentTag withString:contentFromMarkdown];
+    NSString *html = [[self.styleManager styles][1] renderedHtmlWithContent:@{
+            qTemplateTitleTag: self.displayName,
+            qTemplateContentTag: contentFromMarkdown,
+    }];
     self.windowController.html = html;
 }
 

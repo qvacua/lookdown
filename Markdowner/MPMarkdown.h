@@ -9,7 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import "VDKQueue.h"
 
-@interface MPMarkdown : NSDocument <VDKQueueDelegate> {
-}
+@class MPStyleManager;
+
+@interface MPMarkdown : NSDocument <VDKQueueDelegate>
+
+@property MPStyleManager *styleManager;
 
 @end

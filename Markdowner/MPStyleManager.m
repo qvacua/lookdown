@@ -24,8 +24,6 @@ static NSString *const qStyleFileExtension = @"ldstyle";
                 [[MPStyle alloc] initWithUrl:urlOfDefault],
                 [[MPStyle alloc] initWithUrl:urlOfDark],
         ];
-
-        NSLog(@"read styles: %@", self.styles);
     }
 
     return self;

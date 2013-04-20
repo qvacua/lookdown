@@ -8,23 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString *const qTemplateTitleTag = @"<% TITLE %>";
+static NSString *const qTemplateContentTag = @"<% CONTENT %>";
+static NSString *const qTemplateStyleRootTag = @"<% STYLE_ROOT %>";
+
 @interface MPStyle : NSObject {
 }
 
 @property NSString *identifier;
 @property NSString *displayName;
-@property NSURL *url;
-@property NSURL *templateUrl;
+@property NSString *template;
 
 - (id)initWithUrl:(NSURL *)url;
 
-- (NSString *)description;
-
-- (BOOL)isEqual:(id)other;
-
-- (BOOL)isEqualToStyle:(MPStyle *)style;
-
-- (NSUInteger)hash;
-
+- (NSString *)renderedHtmlWithContent:(NSDictionary *)content;
 
 @end

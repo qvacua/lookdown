@@ -8,55 +8,40 @@
 
 #import "MPStyle.h"
 
+@interface MPStyle ()
+
+@property NSURL *url;
+
+@end
+
 @implementation MPStyle
 
 - (id)initWithUrl:(NSURL *)url {
     self = [super init];
     if (self) {
         _url = url;
-        _templateUrl = [url URLByAppendingPathComponent:@"template.html"];
 
         NSURL *metaUrl = [url URLByAppendingPathComponent:@"meta.json"];
         NSDictionary *meta = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:metaUrl] options:(NSJSONReadingOptions) 0 error:NULL];
 
         _identifier = meta[@"identifier"];
         _displayName = meta[@"displayName"];
+
+        NSURL *templateUrl = [url URLByAppendingPathComponent:@"template.html"];
+        _template = [NSString stringWithContentsOfFile:templateUrl.path encoding:NSUTF8StringEncoding error:NULL];
     }
 
     return self;
 }
 
-- (NSString *)description {
-    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"self.identifier=%@", self.identifier];
-    [description appendFormat:@", self.displayName=%@", self.displayName];
-    [description appendFormat:@", self.url=%@", self.url];
-    [description appendFormat:@", self.templateUrl=%@", self.templateUrl];
-    [description appendString:@">"];
-    return description;
-}
+- (NSString *)renderedHtmlWithContent:(NSDictionary *)content {
+    NSString *result = [self.template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:content[qTemplateTitleTag]];
+    result = [result stringByReplacingOccurrencesOfString:qTemplateStyleRootTag withString:self.url.path];
+    result = [result stringByReplacingOccurrencesOfString:qTemplateContentTag withString:content[qTemplateContentTag]];
 
-- (BOOL)isEqual:(id)other {
-    if (other == self)
-        return YES;
-    if (!other || ![[other class] isEqual:[self class]])
-        return NO;
+    NSLog(@"%@", result);
 
-    return [self isEqualToStyle:other];
-}
-
-- (BOOL)isEqualToStyle:(MPStyle *)style {
-    if (self == style)
-        return YES;
-    if (style == nil)
-        return NO;
-    if (self.identifier != style.identifier && ![self.identifier isEqualToString:style.identifier])
-        return NO;
-    return YES;
-}
-
-- (NSUInteger)hash {
-    return [self.identifier hash];
+    return result;
 }
 
 @end
