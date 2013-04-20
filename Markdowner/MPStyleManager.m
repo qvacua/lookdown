@@ -57,4 +57,14 @@ static NSString *const qStyleFileExtension = @"ldstyle";
     return self.tagStyle[@(tag)];
 }
 
+- (MPStyle *)styleForIdentifier:(NSString *)identifier {
+    for (MPStyle *style in self.styles) {
+        if ([style.identifier isEqualToString:identifier]) {
+            return style;
+        }
+    }
+
+    return nil;
+}
+
 @end

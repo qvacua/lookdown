@@ -19,5 +19,6 @@
 
 + (MPStyleManager *)sharedManager;
 - (MPStyle *)styleForTag:(NSInteger)tag;
+- (MPStyle *)styleForIdentifier:(NSString *)identifier;
 
 @end

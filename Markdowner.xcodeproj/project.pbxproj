@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1929B012FDBB78DE59172AB2 /* MPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BF99398D7E7A9CCC1BFA /* MPAppDelegate.m */; };
 		1929B0B98E995E681E0BDE7B /* NSMenuItem+Q.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BA8494E37760215C9F18 /* NSMenuItem+Q.m */; };
 		1929B200F1508171053EA2AF /* NSMenuItem+Q.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1929B0ED11EC82B49F101621 /* NSMenuItem+Q.h */; };
 		1929B217CE3AFEADC93B1DCD /* MPStyleDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B7A40CD7108DC4C8C7B4 /* MPStyleDoc.m */; };
@@ -20,7 +21,9 @@
 		1929BAE5A4F4F0EBB5602D6E /* MPStyleDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B7A40CD7108DC4C8C7B4 /* MPStyleDoc.m */; };
 		1929BB12C09844340D69EB4D /* MPStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BC226F7A69757C51F31D /* MPStyle.m */; };
 		1929BC0920769E4ABC22D9B2 /* VDKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD53DFF44AD2846EB349 /* VDKQueue.m */; };
+		1929BC3E8A493BFD2B48638F /* MPAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1929BB7BB2505D5C2203A03D /* MPAppDelegate.h */; };
 		1929BEE3FEBE69782861B96D /* MPDocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD2982F62911645715DA /* MPDocumentWindowController.m */; };
+		1929BF2E9851679B0E57A821 /* MPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BF99398D7E7A9CCC1BFA /* MPAppDelegate.m */; };
 		1929BF432DCA243D9240C628 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929B9541B4DD0F1A3F5E671 /* CoreServices.framework */; };
 		1929BF46EE7892241D11E00B /* VDKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD53DFF44AD2846EB349 /* VDKQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1929BF80B5FC1899306B183B /* MPStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B67849472B239A83D466 /* MPStyleManager.m */; };
@@ -59,6 +62,7 @@
 				1929B200F1508171053EA2AF /* NSMenuItem+Q.h in CopyFiles */,
 				1929BACA84DD652D1ECE0912 /* MPStyleManager.h in CopyFiles */,
 				1929B58413237BED3E68AFAC /* MPStyle.h in CopyFiles */,
+				1929BC3E8A493BFD2B48638F /* MPAppDelegate.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,9 +80,11 @@
 		1929B9541B4DD0F1A3F5E671 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		1929BA541FB5D0BBB71D1C58 /* MPStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStyle.h; sourceTree = "<group>"; };
 		1929BA8494E37760215C9F18 /* NSMenuItem+Q.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenuItem+Q.m"; sourceTree = "<group>"; };
+		1929BB7BB2505D5C2203A03D /* MPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAppDelegate.h; sourceTree = "<group>"; };
 		1929BC226F7A69757C51F31D /* MPStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStyle.m; sourceTree = "<group>"; };
 		1929BD2982F62911645715DA /* MPDocumentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDocumentWindowController.m; sourceTree = "<group>"; };
 		1929BD53DFF44AD2846EB349 /* VDKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKQueue.m; sourceTree = "<group>"; };
+		1929BF99398D7E7A9CCC1BFA /* MPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAppDelegate.m; sourceTree = "<group>"; };
 		4B340785171A144A00C2217F /* Markdowner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Markdowner.app; path = LookDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B340788171A144A00C2217F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4B340790171A144A00C2217F /* Markdowner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Markdowner-Info.plist"; sourceTree = "<group>"; };
@@ -182,6 +188,8 @@
 				1929B820E93AACE1B888F097 /* MPStyleManager.h */,
 				1929BC226F7A69757C51F31D /* MPStyle.m */,
 				1929BA541FB5D0BBB71D1C58 /* MPStyle.h */,
+				1929BF99398D7E7A9CCC1BFA /* MPAppDelegate.m */,
+				1929BB7BB2505D5C2203A03D /* MPAppDelegate.h */,
 			);
 			path = Markdowner;
 			sourceTree = "<group>";
@@ -346,6 +354,7 @@
 				1929B0B98E995E681E0BDE7B /* NSMenuItem+Q.m in Sources */,
 				1929BF80B5FC1899306B183B /* MPStyleManager.m in Sources */,
 				1929B7A86D9968649F283692 /* MPStyle.m in Sources */,
+				1929BF2E9851679B0E57A821 /* MPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +369,7 @@
 				1929BFDD4A17922AF74DE094 /* NSMenuItem+Q.m in Sources */,
 				1929B532AF21B07207F66F63 /* MPStyleManager.m in Sources */,
 				1929BB12C09844340D69EB4D /* MPStyle.m in Sources */,
+				1929B012FDBB78DE59172AB2 /* MPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

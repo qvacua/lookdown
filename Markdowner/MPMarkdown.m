@@ -10,6 +10,7 @@
 #import "MPDocumentWindowController.h"
 #import "MPStyle.h"
 #import "MPStyleManager.h"
+#import "MPAppDelegate.h"
 #import <OCDiscount/OCDiscount.h>
 
 static const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
@@ -125,7 +126,9 @@ static NSString *const qDocumentNibName = @"MPMarkdown";
     }
 
     [sender setState:NSOnState];
-    [MPStyleManager sharedManager].currentStyle = [[MPStyleManager sharedManager] styleForTag:[sender tag]];
+    MPStyle *style = [[MPStyleManager sharedManager] styleForTag:[sender tag]];
+    [MPStyleManager sharedManager].currentStyle = style;
+    [[NSUserDefaults standardUserDefaults] setObject:style.identifier forKey:qDefaultsSelectedStyleKey];
     [self updateUi];
 }
 
