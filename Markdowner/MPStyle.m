@@ -39,8 +39,6 @@
     result = [result stringByReplacingOccurrencesOfString:qTemplateStyleRootTag withString:self.url.path];
     result = [result stringByReplacingOccurrencesOfString:qTemplateContentTag withString:content[qTemplateContentTag]];
 
-    NSLog(@"%@", result);
-
     return result;
 }
 

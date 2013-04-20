@@ -43,8 +43,9 @@ static NSString *const qDocumentNibName = @"MPMarkdown";
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
-    self.markdown = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    _styleManager = [MPStyleManager sharedManager];
 
+    self.markdown = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     [self updateFileWatcher:self.fileURL.path];
 
     return YES;
@@ -62,8 +63,6 @@ static NSString *const qDocumentNibName = @"MPMarkdown";
     _fileWatcher.delegate = self;
 
     _windowController = [[MPDocumentWindowController alloc] initWithWindowNibName:qDocumentNibName];
-
-    _styleManager = [[MPStyleManager alloc] init];
 
     return self;
 }
@@ -107,14 +106,36 @@ static NSString *const qDocumentNibName = @"MPMarkdown";
 - (void)generateHtmlAndSetController {
     NSString *contentFromMarkdown = [self.markdown htmlFromMarkdown];
     if (contentFromMarkdown == nil) {
-        contentFromMarkdown = @"<h1>CONVERSION FAILED</h1>";
+        contentFromMarkdown = @"<h1>Sorry</h1><p>Something went horribly wrong...</p>";
     }
 
-    NSString *html = [[self.styleManager styles][1] renderedHtmlWithContent:@{
-            qTemplateTitleTag: self.displayName,
-            qTemplateContentTag: contentFromMarkdown,
+    self.windowController.html = [_styleManager.currentStyle renderedHtmlWithContent:@{
+            qTemplateTitleTag : self.displayName,
+            qTemplateContentTag : contentFromMarkdown,
     }];
-    self.windowController.html = html;
+}
+
+#pragma mark IBActions
+- (IBAction)styleAction:(id)sender {
+    NSMenuItem *parentItem = [sender parentItem];
+    NSMenu *parentMenu = parentItem.submenu;
+
+    for (NSMenuItem *menuItem in parentMenu.itemArray) {
+        [menuItem setState:NSOffState];
+    }
+
+    [sender setState:NSOnState];
+    [MPStyleManager sharedManager].currentStyle = [[MPStyleManager sharedManager] styleForTag:[sender tag]];
+    [self updateUi];
+}
+
+#pragma mark NSUserInterfaceValidations
+- (BOOL)validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)anItem {
+    if ([anItem action] == @selector(styleAction:)) {
+        return YES;
+    }
+
+    return NO;
 }
 
 @end

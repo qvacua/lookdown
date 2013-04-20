@@ -12,6 +12,12 @@
 static NSString *const qStylesSubdirectory = @"Styles";
 static NSString *const qStyleFileExtension = @"ldstyle";
 
+@interface MPStyleManager ()
+
+@property NSDictionary *tagStyle;
+
+@end
+
 @implementation MPStyleManager
 
 - (id)init {
@@ -20,13 +26,35 @@ static NSString *const qStyleFileExtension = @"ldstyle";
         NSURL *urlOfDefault = [[NSBundle mainBundle] URLForResource:@"default" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
         NSURL *urlOfDark = [[NSBundle mainBundle] URLForResource:@"dark" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
 
-        _styles = @[
-                [[MPStyle alloc] initWithUrl:urlOfDefault],
-                [[MPStyle alloc] initWithUrl:urlOfDark],
-        ];
+        _defaultStyle = [[MPStyle alloc] initWithUrl:urlOfDefault];
+        _darkStyle = [[MPStyle alloc] initWithUrl:urlOfDark];
+        _styles = @[_defaultStyle, _darkStyle];
+
+        _tagStyle = @{
+                @1: self.defaultStyle,
+                @2: self.darkStyle,
+        };
+
+        _currentStyle = self.defaultStyle;
     }
 
     return self;
+}
+
++ (MPStyleManager *)sharedManager {
+    static MPStyleManager *_instance = nil;
+
+    @synchronized (self) {
+        if (_instance == nil) {
+            _instance = [[self alloc] init];
+        }
+    }
+
+    return _instance;
+}
+
+- (MPStyle *)styleForTag:(NSInteger)tag {
+    return self.tagStyle[@(tag)];
 }
 
 @end

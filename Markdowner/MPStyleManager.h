@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MPStyleManager : NSObject {
-}
+@class MPStyle;
+
+@interface MPStyleManager : NSObject
 
 @property NSArray *styles;
+@property MPStyle *defaultStyle;
+@property MPStyle *darkStyle;
+@property MPStyle *currentStyle;
+
++ (MPStyleManager *)sharedManager;
+- (MPStyle *)styleForTag:(NSInteger)tag;
 
 @end

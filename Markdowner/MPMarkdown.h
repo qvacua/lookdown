@@ -11,8 +11,10 @@
 
 @class MPStyleManager;
 
-@interface MPMarkdown : NSDocument <VDKQueueDelegate>
+@interface MPMarkdown : NSDocument <VDKQueueDelegate, NSUserInterfaceValidations>
 
 @property MPStyleManager *styleManager;
+
+- (IBAction)styleAction:(id)sender;
 
 @end
