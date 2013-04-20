@@ -7,11 +7,10 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import "VDKQueue.h"
 
-@class UKKQueue;
+@interface NSMenuItem (Q)
 
-@interface MPDocument : NSDocument <VDKQueueDelegate> {
-}
+- (void)setBlockAction:(void (^)(id sender))block;
+- (void (^)(id))blockAction;
 
 @end

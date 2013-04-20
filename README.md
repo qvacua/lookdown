@@ -10,4 +10,4 @@ LookDown is a simple Markdown preview App for OS X. It monitors the opened files
 
 Source Code License
 -------------------
-The source code of Qmind is licensed under GNU General Public License version 3 as published by the Free Software Foundation.
+The source code of LookDown is licensed under GNU General Public License version 3 as published by the Free Software Foundation.

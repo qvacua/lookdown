@@ -1,0 +1,114 @@
+<!--
+ Tae Won Ha
+ http://qvacua.com
+ https://github.com/qvacua
+
+ See LICENSE
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><% TITLE %></title>
+    <style>
+        /*
+         Based on http://webdesign.maratz.com/lab/typography-for-developers/style.css
+         Colors based on Darcula theme of JetBrains
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font: 10px/1.5 Georgia, serif;
+            color: #c5c0b2;
+
+            background: #f8f8f8 url(<% STYLE_ROOT %>/background.gif);
+        }
+
+        body {
+            text-rendering: optimizeLegibility;
+        }
+
+        p, li, th, td {
+            font-size: 1.6rem;
+            line-height: 1.5;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: #90bc00;
+        }
+
+        ul, ol {
+            margin-bottom: 2.4rem;
+        }
+
+        ul ul, ul ol, ol ul, ol ol {
+            margin-left: 2rem;
+        }
+
+        h3, h2, h1 {
+            font-family: "Helvetica Neue", sans-serif;
+            font-weight: bold;
+            line-height: 1.5;
+            color: white;
+        }
+
+        h3 {
+            font-size: 1.6em;
+        }
+
+        h2 {
+            font-size: 2.4em;
+            padding: .5833em 0 0;
+            margin-bottom: .9166em;
+        }
+
+        h1 {
+            font-size: 3.2em;
+            padding: 12px 0 0;
+            margin-bottom: .59em;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 3.6em;
+            margin-bottom: 3.6em;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        th {
+            font-weight: normal;
+        }
+
+        th, td {
+            border-top: .0625em solid #ccc;
+            padding: .6875em 1em .75em;
+            vertical-align: top;
+        }
+
+        th[scope="row"] {
+            padding-left: 0;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        #content {
+            width: 54em;
+            padding: 0 2em;
+            margin: 2em auto;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="content"><% CONTENT %></div>
+</body>
+</html>

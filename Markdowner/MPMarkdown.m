@@ -6,16 +6,18 @@
  * See LICENSE
  */
 
-#import "MPDocument.h"
+#import "MPMarkdown.h"
 #import "MPDocumentWindowController.h"
+#import "MPStyle.h"
+#import "MPStyleManager.h"
+#import "MPAppDelegate.h"
 #import <OCDiscount/OCDiscount.h>
 
 static const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
-static NSString *const qDocumentNibName = @"MPDocument";
-static NSString *const qTemplateTitleTag = @"<% TITLE %>";
-static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 
-@interface MPDocument ()
+static NSString *const qDocumentNibName = @"MPMarkdown";
+
+@interface MPMarkdown ()
 
 @property MPDocumentWindowController *windowController;
 @property VDKQueue *fileWatcher;
@@ -23,7 +25,7 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 
 @end
 
-@implementation MPDocument
+@implementation MPMarkdown
 
 #pragma mark NSDocument
 - (void)makeWindowControllers {
@@ -42,8 +44,9 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
-    self.markdown = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    _styleManager = [MPStyleManager sharedManager];
 
+    self.markdown = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     [self updateFileWatcher:self.fileURL.path];
 
     return YES;
@@ -63,12 +66,6 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
     _windowController = [[MPDocumentWindowController alloc] initWithWindowNibName:qDocumentNibName];
 
     return self;
-}
-
-- (void)dealloc {
-    // just to be sure... probably not necessary
-    [self.fileWatcher removeAllPaths];
-    self.fileWatcher = nil;
 }
 
 #pragma mark VDKQueueDelegate
@@ -108,13 +105,40 @@ static NSString *const qTemplateContentTag = @"<% CONTENT %>";
 }
 
 - (void)generateHtmlAndSetController {
-    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"template" ofType:@"html"];
-    NSString *template = [NSString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL];
+    NSString *contentFromMarkdown = [self.markdown htmlFromMarkdown];
+    if (contentFromMarkdown == nil) {
+        contentFromMarkdown = @"<h1>Sorry</h1><p>Something went horribly wrong...</p>";
+    }
 
-    NSString *html = [template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:self.displayName];
-    html = [html stringByReplacingOccurrencesOfString:qTemplateContentTag withString:[self.markdown htmlFromMarkdown]];
+    self.windowController.html = [_styleManager.currentStyle renderedHtmlWithContent:@{
+            qTemplateTitleTag : self.displayName,
+            qTemplateContentTag : contentFromMarkdown,
+    }];
+}
 
-    self.windowController.html = html;
+#pragma mark IBActions
+- (IBAction)styleAction:(id)sender {
+    NSMenuItem *parentItem = [sender parentItem];
+    NSMenu *parentMenu = parentItem.submenu;
+
+    for (NSMenuItem *menuItem in parentMenu.itemArray) {
+        [menuItem setState:NSOffState];
+    }
+
+    [sender setState:NSOnState];
+    MPStyle *style = [[MPStyleManager sharedManager] styleForTag:[sender tag]];
+    [MPStyleManager sharedManager].currentStyle = style;
+    [[NSUserDefaults standardUserDefaults] setObject:style.identifier forKey:qDefaultsSelectedStyleKey];
+    [self updateUi];
+}
+
+#pragma mark NSUserInterfaceValidations
+- (BOOL)validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)anItem {
+    if ([anItem action] == @selector(styleAction:)) {
+        return YES;
+    }
+
+    return NO;
 }
 
 @end
