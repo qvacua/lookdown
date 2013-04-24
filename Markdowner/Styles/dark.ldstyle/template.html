@@ -11,10 +11,12 @@
     <meta charset="utf-8">
     <title><% TITLE %></title>
     <style>
-        /*
-         Based on http://webdesign.maratz.com/lab/typography-for-developers/style.css
-         Colors based on Darcula theme of JetBrains
-        */
+        #content {
+            width: 54em;
+            padding: 0 2em;
+            margin: 2em auto;
+            overflow: auto;
+        }
 
         * {
             margin: 0;
@@ -22,14 +24,17 @@
         }
 
         html {
-            font: 10px/1.5 Georgia, serif;
+            font: 62.5%/1.5 Georgia, serif;
+            background: #f8f8f8 url(<% STYLE_ROOT %>/background.gif );
             color: #c5c0b2;
-
-            background: #f8f8f8 url(<% STYLE_ROOT %>/background.gif);
         }
 
         body {
             text-rendering: optimizeLegibility;
+        }
+
+        #content {
+            padding: 0 4em;
         }
 
         p, li, th, td {
@@ -38,42 +43,88 @@
         }
 
         p {
-            margin-bottom: 1.5rem;
-        }
-
-        a {
-            color: #90bc00;
+            margin-bottom: 1.5em;
         }
 
         ul, ol {
             margin-bottom: 2.4rem;
         }
 
-        ul ul, ul ol, ol ul, ol ol {
-            margin-left: 2rem;
+        li ul, li ol {
+            margin-bottom: 0;
         }
 
-        h3, h2, h1 {
+        li li {
+            margin-left: 1.5em;
+        }
+
+        a {
+            color: #90bc00;
+        }
+
+        hr {
+            border: 1px solid #cccccc;
+            margin: 2.2rem 0;
+        }
+
+        blockquote {
+            border-left: 1.2rem solid #cccccc;
+            padding-left: 2.4rem;
+            padding-right: 4.8rem;
+            font-style: italic;
+        }
+
+        h6, h5, h4, h3, h2, h1 {
             font-family: "Helvetica Neue", sans-serif;
-            font-weight: bold;
-            line-height: 1.5;
             color: white;
         }
 
-        h3 {
+        h3, h2, h1 {
+            font-weight: bold;
+        }
+
+        h6 {
             font-size: 1.6em;
+            padding-top: 2.4rem;
+        }
+
+        h5 {
+            font-size: 1.8em;
+            padding-top: 2.2rem;
+            line-height: 2.4rem;
+            margin-bottom: 0.2rem;
+        }
+
+        h4 {
+            font-size: 2em;
+            padding-top: 2.1rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-size: 2.4em;
+            padding-top: 0.8rem;
+            margin-bottom: 1.6rem;
+            line-height: 2;
         }
 
         h2 {
-            font-size: 2.4em;
-            padding: .5833em 0 0;
-            margin-bottom: .9166em;
+            font-size: 3.6em;
+            padding-top: 0.4rem;
+            margin-bottom: 2rem;
+            line-height: 4.8rem;
         }
 
         h1 {
-            font-size: 3.2em;
-            padding: 12px 0 0;
-            margin-bottom: .59em;
+            font-size: 4.8em;
+            padding-top: 1.2rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        h1:first-child {
+            padding-top: 3.6rem;
         }
 
         table {
@@ -89,7 +140,7 @@
         }
 
         th, td {
-            border-top: .0625em solid #ccc;
+            border-top: 0.063em solid #cccccc;
             padding: .6875em 1em .75em;
             vertical-align: top;
         }
@@ -100,11 +151,12 @@
             white-space: nowrap;
         }
 
-        #content {
-            width: 54em;
-            padding: 0 2em;
-            margin: 2em auto;
-            overflow: auto;
+        .numeric {
+            text-align: right;
+        }
+
+        td.numeric {
+            font-family: Menlo, monospace;
         }
     </style>
 </head>
