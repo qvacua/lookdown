@@ -15,6 +15,7 @@
 @property NSArray *styles;
 @property MPStyle *defaultStyle;
 @property MPStyle *darkStyle;
+@property MPStyle *noteStyle;
 @property MPStyle *currentStyle;
 
 + (MPStyleManager *)sharedManager;

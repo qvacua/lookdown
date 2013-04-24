@@ -25,14 +25,17 @@ static NSString *const qStyleFileExtension = @"ldstyle";
     if (self) {
         NSURL *urlOfDefault = [[NSBundle mainBundle] URLForResource:@"default" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
         NSURL *urlOfDark = [[NSBundle mainBundle] URLForResource:@"dark" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
+        NSURL *urlOfNote = [[NSBundle mainBundle] URLForResource:@"note" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
 
         _defaultStyle = [[MPStyle alloc] initWithUrl:urlOfDefault];
         _darkStyle = [[MPStyle alloc] initWithUrl:urlOfDark];
-        _styles = @[_defaultStyle, _darkStyle];
+        _noteStyle = [[MPStyle alloc] initWithUrl:urlOfNote];
+        _styles = @[self.defaultStyle, self.darkStyle, self.noteStyle];
 
         _tagStyle = @{
                 @1: self.defaultStyle,
                 @2: self.darkStyle,
+                @3: self.noteStyle,
         };
 
         _currentStyle = self.defaultStyle;
