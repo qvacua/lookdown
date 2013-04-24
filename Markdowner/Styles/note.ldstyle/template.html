@@ -12,125 +12,158 @@
     <title><% TITLE %></title>
     <style>
         * {
-          margin: 0;
-          padding: 0; }
+            margin: 0;
+            padding: 0;
+        }
 
         html {
-          font: 62.5%/1.5 Georgia, serif;
-          color: black; }
+            font: 62.5%/1.5 Georgia, serif;
+            color: black;
+        }
 
         body {
-          text-rendering: optimizeLegibility;
-          background-image: url(<% STYLE_ROOT %>/background.gif); }
+            text-rendering: optimizeLegibility;
+            background-image: url(<% STYLE_ROOT %>/background.gif );
+        }
 
         #container {
-          background-position: 0 -0.59rem;
-          background-size: 100% 2.4rem;
-          background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 95%, #cecc9f 95%, #cecc9f 100%);
-          background-repeat: repeat-y;
-          padding: 0 4em; }
+            background-position: 0 -0.59rem;
+            background-size: 100% 2.4rem;
+            background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 95%, #cecc9f 95%, #cecc9f 100%);
+            background-repeat: repeat-y;
+        }
+
+        #content {
+            width: 54em;
+            padding: 0 4em;
+            margin: 0 auto;
+            overflow: auto;
+        }
 
         p, li, th, td, code {
-          font-size: 1.6rem;
-          line-height: 1.5; }
+            font-size: 1.6rem;
+            line-height: 1.5;
+        }
 
         p {
-          margin-bottom: 1.5em; }
+            margin-bottom: 1.5em;
+        }
 
         ul, ol {
-          margin-bottom: 2.4rem; }
+            margin-bottom: 2.4rem;
+        }
 
         li ul, li ol {
-          margin-bottom: 0; }
+            margin-bottom: 0;
+        }
 
         li li {
-          margin-left: 1.5em; }
+            margin-left: 1.5em;
+        }
 
         hr {
-          border: 1px solid black;
-          margin: 2.2rem 0; }
+            border: 1px solid black;
+            margin: 2.2rem 0;
+        }
 
         code {
-          font-family: Menlo, monospace; }
+            font-family: Menlo, monospace;
+        }
 
         blockquote {
-          border-left: 1.2rem solid black;
-          padding-left: 2.4rem;
-          padding-right: 4.8rem;
-          font-style: italic; }
+            border-left: 1.2rem solid black;
+            padding-left: 2.4rem;
+            padding-right: 4.8rem;
+            font-style: italic;
+        }
 
         h6, h5, h4, h3, h2, h1 {
-          font-family: "Helvetica Neue", sans-serif;
-          color: black; }
+            font-family: "Helvetica Neue", sans-serif;
+            color: black;
+        }
 
         h3, h2, h1 {
-          font-weight: bold; }
+            font-weight: bold;
+        }
 
         h6 {
-          font-size: 1.6em;
-          padding-top: 2.4rem; }
+            font-size: 1.6em;
+            padding-top: 2.4rem;
+        }
 
         h5 {
-          font-size: 1.8em;
-          padding-top: 2.2rem;
-          line-height: 2.4rem;
-          margin-bottom: 0.2rem; }
+            font-size: 1.8em;
+            padding-top: 2.2rem;
+            line-height: 2.4rem;
+            margin-bottom: 0.2rem;
+        }
 
         h4 {
-          font-size: 2em;
-          padding-top: 2.1rem;
-          margin-bottom: 0.3rem;
-          line-height: 1.2; }
+            font-size: 2em;
+            padding-top: 2.1rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
 
         h3 {
-          font-size: 2.4em;
-          padding-top: 0.8rem;
-          margin-bottom: 1.6rem;
-          line-height: 2; }
+            font-size: 2.4em;
+            padding-top: 0.8rem;
+            margin-bottom: 1.6rem;
+            line-height: 2;
+        }
 
         h2 {
-          font-size: 3.6em;
-          padding-top: 0.4rem;
-          margin-bottom: 2rem;
-          line-height: 4.8rem; }
+            font-size: 3.6em;
+            padding-top: 0.4rem;
+            margin-bottom: 2rem;
+            line-height: 4.8rem;
+        }
 
         h1 {
-          font-size: 4.8em;
-          padding-top: 1.2rem;
-          margin-bottom: 1.2rem;
-          line-height: 1.5; }
+            font-size: 4.8em;
+            padding-top: 1.2rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
 
         h1:first-child {
-          padding-top: 3.6rem; }
+            padding-top: 3.6rem;
+        }
 
         table {
-          border-collapse: collapse;
-          margin-top: 3.6em;
-          margin-bottom: 3.6em;
-          table-layout: fixed;
-          width: 100%; }
+            border-collapse: collapse;
+            margin-top: 3.6em;
+            margin-bottom: 3.6em;
+            table-layout: fixed;
+            width: 100%;
+        }
 
         th {
-          font-weight: normal; }
+            font-weight: normal;
+        }
 
         th, td {
-          border-top: 0.063em solid black;
-          padding: .6875em 1em .75em;
-          vertical-align: top; }
+            border-top: 0.063em solid black;
+            padding: .6875em 1em .75em;
+            vertical-align: top;
+        }
 
         th[scope="row"] {
-          padding-left: 0;
-          text-align: left;
-          white-space: nowrap; }
+            padding-left: 0;
+            text-align: left;
+            white-space: nowrap;
+        }
 
         .numeric {
-          text-align: right; }
+            text-align: right;
+        }
 
         td.numeric {
-          font-family: Menlo, monospace; }
+            font-family: Menlo, monospace;
+        }
     </style>
 </head>
 <body>
-<div id="container"><% CONTENT %></div>
+<div id="container"><div id="content"><% CONTENT %></div></div>
 </body>
 </html>
