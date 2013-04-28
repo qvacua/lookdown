@@ -6,7 +6,9 @@ LookDown
 
 About
 -----
-LookDown is a simple Markdown preview App for OS X. It monitors the opened files for any change and refreshes the preview. I use [Vim](http://www.vim.org) or [MacVim](https://code.google.com/p/macvim/) for Markdown editing, and wanted to have a simple previewer.
+LookDown is a simple Markdown preview App for OS X. It monitors the opened files for any change and refreshes the preview. LookDown also includes QuickLook support and thumbnail generation.
+
+I use [Vim](http://www.vim.org) or [MacVim](https://code.google.com/p/macvim/) for Markdown editing, and wanted to have a simple previewer.
 
 Source Code License
 -------------------
