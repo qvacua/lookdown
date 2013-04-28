@@ -23,9 +23,9 @@ static NSString *const qStyleFileExtension = @"ldstyle";
 - (id)init {
     self = [super init];
     if (self) {
-        NSURL *urlOfDefault = [[NSBundle mainBundle] URLForResource:@"default" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
-        NSURL *urlOfDark = [[NSBundle mainBundle] URLForResource:@"dark" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
-        NSURL *urlOfNote = [[NSBundle mainBundle] URLForResource:@"note" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
+        NSURL *urlOfDefault = [[NSBundle bundleForClass:self.class] URLForResource:@"default" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
+        NSURL *urlOfDark = [[NSBundle bundleForClass:self.class] URLForResource:@"dark" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
+        NSURL *urlOfNote = [[NSBundle bundleForClass:self.class] URLForResource:@"note" withExtension:qStyleFileExtension subdirectory:qStylesSubdirectory];
 
         _defaultStyle = [[MPStyle alloc] initWithUrl:urlOfDefault];
         _darkStyle = [[MPStyle alloc] initWithUrl:urlOfDark];

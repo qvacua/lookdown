@@ -36,7 +36,7 @@
 
 - (NSString *)renderedHtmlWithContent:(NSDictionary *)content {
     NSString *result = [self.template stringByReplacingOccurrencesOfString:qTemplateTitleTag withString:content[qTemplateTitleTag]];
-    result = [result stringByReplacingOccurrencesOfString:qTemplateStyleRootTag withString:self.url.path];
+    result = [result stringByReplacingOccurrencesOfString:qTemplateStyleRootTag withString:self.url.absoluteString];
     result = [result stringByReplacingOccurrencesOfString:qTemplateContentTag withString:content[qTemplateContentTag]];
 
     return result;
