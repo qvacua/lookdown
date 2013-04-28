@@ -11,9 +11,11 @@
 		1929B0B98E995E681E0BDE7B /* NSMenuItem+Q.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BA8494E37760215C9F18 /* NSMenuItem+Q.m */; };
 		1929B217CE3AFEADC93B1DCD /* MPStyleDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B7A40CD7108DC4C8C7B4 /* MPStyleDoc.m */; };
 		1929B532AF21B07207F66F63 /* MPStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B67849472B239A83D466 /* MPStyleManager.m */; };
+		1929B6D60F109E1A7AB7BC10 /* MPMarkdownProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 1929B8647E730BE04C583246 /* MPMarkdownProcessor.h */; };
 		1929B711F7AC113F300CF796 /* MPDocumentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD2982F62911645715DA /* MPDocumentWindowController.m */; };
 		1929B7A86D9968649F283692 /* MPStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BC226F7A69757C51F31D /* MPStyle.m */; };
 		1929B84EC7C8CDA10BFFE74E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929B40260BD1974C8EC902A /* WebKit.framework */; };
+		1929B9ACBC39D0E7C7664EBD /* MPMarkdownProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B103FF7B2C26000CC34F /* MPMarkdownProcessor.m */; };
 		1929BAE5A4F4F0EBB5602D6E /* MPStyleDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929B7A40CD7108DC4C8C7B4 /* MPStyleDoc.m */; };
 		1929BB12C09844340D69EB4D /* MPStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BC226F7A69757C51F31D /* MPStyle.m */; };
 		1929BC0920769E4ABC22D9B2 /* VDKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929BD53DFF44AD2846EB349 /* VDKQueue.m */; };
@@ -109,11 +111,13 @@
 /* Begin PBXFileReference section */
 		1929B08527BB1DEB2769A9C5 /* VDKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKQueue.h; sourceTree = "<group>"; };
 		1929B0ED11EC82B49F101621 /* NSMenuItem+Q.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem+Q.h"; sourceTree = "<group>"; };
+		1929B103FF7B2C26000CC34F /* MPMarkdownProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMarkdownProcessor.m; sourceTree = "<group>"; };
 		1929B40260BD1974C8EC902A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		1929B67849472B239A83D466 /* MPStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStyleManager.m; sourceTree = "<group>"; };
 		1929B7139BA7DBFC522EA00A /* MPStyleDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStyleDoc.h; sourceTree = "<group>"; };
 		1929B7A40CD7108DC4C8C7B4 /* MPStyleDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPStyleDoc.m; sourceTree = "<group>"; };
 		1929B820E93AACE1B888F097 /* MPStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStyleManager.h; sourceTree = "<group>"; };
+		1929B8647E730BE04C583246 /* MPMarkdownProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMarkdownProcessor.h; sourceTree = "<group>"; };
 		1929B8CA16AF8B533B2A46CA /* MPDocumentWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDocumentWindowController.h; sourceTree = "<group>"; };
 		1929B9541B4DD0F1A3F5E671 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		1929BA541FB5D0BBB71D1C58 /* MPStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPStyle.h; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 				4B0BDFA4172B1F510040F485 /* GeneratePreviewForURL.m */,
 				4B0BDFA6172B1F510040F485 /* main.c */,
 				4B0BDF9D172B1F510040F485 /* Supporting Files */,
+				1929B103FF7B2C26000CC34F /* MPMarkdownProcessor.m */,
+				1929B8647E730BE04C583246 /* MPMarkdownProcessor.h */,
 			);
 			path = QuickLookDown;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1929B6D60F109E1A7AB7BC10 /* MPMarkdownProcessor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +502,7 @@
 				4B0BDFA3172B1F510040F485 /* GenerateThumbnailForURL.m in Sources */,
 				4B0BDFA5172B1F510040F485 /* GeneratePreviewForURL.m in Sources */,
 				4B0BDFA7172B1F510040F485 /* main.c in Sources */,
+				1929B9ACBC39D0E7C7664EBD /* MPMarkdownProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuickLook/QuickLook.h>
-#import <OCDiscount/OCDiscount.h>
-#import "MPStyleManager.h"
-#import "MPStyle.h"
+#import "MPMarkdownProcessor.h"
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
 
@@ -19,23 +17,10 @@ void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview);
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options) {
     @autoreleasepool {
         if (QLPreviewRequestIsCancelled(preview)) {
-            return (OSStatus) noErr;
+            return noErr;
         }
 
-        NSString *markdown = [NSString stringWithContentsOfURL:(__bridge NSURL *) url encoding:NSUTF8StringEncoding error:NULL];
-        NSString *htmlContent = [markdown htmlFromMarkdown];
-
-        NSString *styleIdOfLookDown = (__bridge NSString *) CFPreferencesCopyAppValue(
-                CFSTR("style"),
-                CFSTR("com.qvacua.LookDown")
-        );
-
-        MPStyle *style = [[MPStyleManager sharedManager] styleForIdentifier:styleIdOfLookDown];
-        NSString *html = [style renderedHtmlWithContent:@{
-                qTemplateTitleTag : [(__bridge NSURL *) url lastPathComponent],
-                qTemplateContentTag : htmlContent,
-        }];
-
+        NSString *html = [MPMarkdownProcessor htmlFromUrl:(__bridge NSURL *) url];
         NSDictionary *props = @{
                 (__bridge NSString *) kQLPreviewPropertyTextEncodingNameKey : @"UTF-8",
                 (__bridge NSString *) kQLPreviewPropertyMIMETypeKey : @"text/html",
@@ -49,7 +34,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         );
     }
 
-    return (OSStatus) noErr;
+    return noErr;
 }
 
 void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview) {
