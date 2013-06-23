@@ -13,9 +13,11 @@
 #import "MPAppDelegate.h"
 #import <OCDiscount/OCDiscount.h>
 
+
 static const u_int qDefaultFileNotifierEvents = VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite;
 
 static NSString *const qDocumentNibName = @"MPMarkdown";
+
 
 @interface MPMarkdown ()
 
@@ -24,6 +26,7 @@ static NSString *const qDocumentNibName = @"MPMarkdown";
 @property NSString *markdown;
 
 @end
+
 
 @implementation MPMarkdown
 
@@ -49,6 +52,8 @@ static NSString *const qDocumentNibName = @"MPMarkdown";
     self.markdown = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     [self updateFileWatcher:self.fileURL.path];
 
+    [self addObserver:self forKeyPath:@"fileURL" options:NSKeyValueObservingOptionNew context:NULL];
+
     return YES;
 }
 
@@ -66,6 +71,15 @@ static NSString *const qDocumentNibName = @"MPMarkdown";
     _windowController = [[MPDocumentWindowController alloc] initWithWindowNibName:qDocumentNibName];
 
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (![keyPath isEqualToString:@"fileURL"]) {
+        return;
+    }
+
+    [self updateUi];
+    [self updateFileWatcher:self.fileURL.path];
 }
 
 #pragma mark VDKQueueDelegate
